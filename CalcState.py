@@ -10,7 +10,22 @@ class CalcState:
 		
 	def SetShouldReset(self, value = True):
 		self.ShouldReset = value
-		
+
+	def RemoveLast(self):
+		text = self.OutputLabel['text']
+
+		if len(text) > 0:
+			toRemove = text[-1]
+			if (toRemove == ' '):
+				self.OutputLabel['text'] = text[:-2]
+			else:
+				self.OutputLabel['text'] = text[:-1]
+
+	def ClearText(self):
+		self.OutputLabel['text'] = '0'
+		self.SetShouldReset()
+		self.EqualReset = False
+
 	def AddOutputLabelText(self, text):
 		if (self.ShouldReset):
 			self.OutputLabel['text'] = text

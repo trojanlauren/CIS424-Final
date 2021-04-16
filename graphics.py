@@ -47,8 +47,8 @@ class Graphics:
 		btnMod = self.CreateButton(root, text = "%", width = 10, height = 3, row = 3, column = 0, function = self.TypeButton)
 		btnSquare = self.CreateButton(root, text = "x²", width = 10, height = 3, row = 3, column = 1, function = self.TypeButton)
 		btnSqrt = self.CreateButton(root, text = "Sq", width = 10, height = 3, row = 3, column = 2, function = self.TypeButton)
-		btnDel = self.CreateButton(root, text = "Del", width = 10, height = 3, row = 1, column = 3, function = self.TypeButton)
-		btnClr = self.CreateButton(root, text = "C", width = 10, height = 3, row = 1, column = 2, function = self.TypeButton)
+		btnDel = self.CreateButton(root, text = "Del", width = 10, height = 3, row = 1, column = 3, function = self.DeleteLast)
+		btnClr = self.CreateButton(root, text = "C", width = 10, height = 3, row = 1, column = 2, function = self.ClearScreen)
 
 		widthScreen = root.winfo_screenwidth()
 		heightScreen = root.winfo_screenheight()
@@ -63,7 +63,13 @@ class Graphics:
 		self.CalcState.AddOutputLabelText(event.widget['text'])
 		
 	def EvaluateCalcString(self, event):
-		self.CalcState.CalculateResult()		
+		self.CalcState.CalculateResult()	
+
+	def ClearScreen(self, event):
+		self.CalcState.ClearText()
+
+	def DeleteLast(self, event):
+		self.CalcState.RemoveLast()	
 
 	def CreateButton(self, root, text, width, height, row, column, function):
 		btn = Button(root, text = text, width = width, height = height)
