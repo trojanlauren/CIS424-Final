@@ -1,10 +1,12 @@
 import tkinter as tk
 from tkinter import *
-import graphics
+from graphics import Graphics
 
 # create window
 root = tk.Tk()
 root.title("Calculator")
+
+graphics = Graphics()
 
 graphics.BuildWindow(root)
 
