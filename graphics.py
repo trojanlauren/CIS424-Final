@@ -49,6 +49,8 @@ class Graphics:
 		btnSqrt = self.CreateButton(root, text = "Sq", width = 10, height = 3, row = 3, column = 2, function = self.TypeButton)
 		btnDel = self.CreateButton(root, text = "Del", width = 10, height = 3, row = 1, column = 3, function = self.DeleteLast)
 		btnClr = self.CreateButton(root, text = "C", width = 10, height = 3, row = 1, column = 2, function = self.ClearScreen)
+		btnOpenPeren = self.CreateButton(root, text = "(", width = 10, height = 3, row = 8, column = 0, function = self.TypeButton)
+		btnClosePeren = self.CreateButton(root, text = ")", width = 10, height = 3, row = 8, column = 1, function = self.TypeButton)
 
 		widthScreen = root.winfo_screenwidth()
 		heightScreen = root.winfo_screenheight()
