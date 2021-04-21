@@ -56,7 +56,7 @@ class CalcState:
 		self.EqualReset = True
 	
 	def ReplaceSymbols(self, text):
-		text = text.replace('π', 'math.pi').replace('e', 'math.e').replace('sin', 'math.sin')
+		text = text.replace('π', 'math.pi').replace('e', 'math.e')
 		text = text.replace('sin', 'math.sin').replace('cos', 'math.cos').replace('tan', 'math.tan')
 		
 		return text
