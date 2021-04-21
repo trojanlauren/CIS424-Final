@@ -58,6 +58,7 @@ class CalcState:
 	def ReplaceSymbols(self, text):
 		text = text.replace('π', 'math.pi').replace('e', 'math.e')
 		text = text.replace('sin', 'math.sin').replace('cos', 'math.cos').replace('tan', 'math.tan')
+		text = text.replace('(-)', '(-1)*')
 		
 		return text
 		
