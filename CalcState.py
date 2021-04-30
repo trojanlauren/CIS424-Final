@@ -6,7 +6,7 @@ class CalcState:
 	def __init__(self, outputLabel):		
 		self.OutputLabel = outputLabel
 		self.ShouldReset = True		
-		self.EqualReset = False
+		self.PartialReset = False
 		self.LastValue = ''
 		
 	def SetShouldReset(self, value = True):
@@ -16,6 +16,7 @@ class CalcState:
 		text = self.OutputLabel['text']
 		if len(text) == 1:
 			self.OutputLabel['text'] = '0'
+			self.SetShouldReset()
 			return
 		else:
 			toRemove = text[-1]
@@ -27,25 +28,33 @@ class CalcState:
 	def ClearText(self):
 		self.OutputLabel['text'] = '0'
 		self.SetShouldReset()
-		self.EqualReset = False
+		self.PartialReset = False
 
 	def AddOutputLabelText(self, text):
+		if text == 'x²':
+			text = '²'
+		if text == '!':
+			text = 'fact'
+
 		if (self.ShouldReset):
 			if text == ".":
 				self.OutputLabel = "0."
 			elif self.IsOperator(text):
 				self.OutputLabel['text'] = "0 " + text
+			elif self.IsSpecialFunction(text):
+				self.OutputLabel['text'] = text + "("
 			else:
 				self.OutputLabel['text'] = text
 
 			self.SetShouldReset(False)
-			self.EqualReset = False
+			self.PartialReset = False
 			self.LastValue = text
 		else:
 			isOperator = self.IsOperator(text)
 			isNumericOrDecimal = self.IsTextNumericOrDecimal(text)
-		
-			if (isNumericOrDecimal and self.EqualReset == True):
+			isSpecialFunction = self.IsSpecialFunction(text)
+
+			if (isNumericOrDecimal and self.PartialReset == True):
 				self.OutputLabel['text'] = text 
 			else:
 				currLabelText = self.OutputLabel['text']
@@ -61,10 +70,21 @@ class CalcState:
 
 				if text == '.' and self.IsOperator(self.LastValue):
 					text = "0."
-			
+
+				if text == '²':
+					space = ''
+
+				if isSpecialFunction:
+					text += "("
+					space = ''
+					
+					if self.PartialReset:
+						currLabelText = text
+						text = ''
+
 				self.OutputLabel['text'] = currLabelText + space + text 
 			
-			self.EqualReset = False
+			self.PartialReset = False
 			
 			self.LastValue = text
 			
@@ -73,17 +93,24 @@ class CalcState:
 		text = self.ReplaceSymbols(text)
 		
 		try:
-			text = str(eval(text))
+			num = float(eval(text))
+			if (num.is_integer()):
+				num = int(num)
+
+			text = str(num)
 		except:
 			text = "Invalid Expression"
 			self.SetShouldReset(True)
 		
+		
 		self.OutputLabel['text'] = text
-		self.EqualReset = True
+		self.PartialReset = True
 	
 	def ReplaceSymbols(self, text):
 		text = text.replace('π', 'math.pi').replace('e', 'math.e')
 		text = text.replace('sin', 'math.sin').replace('cos', 'math.cos').replace('tan', 'math.tan')
+		text = text.replace('ln', 'math.log').replace('log', 'math.log10').replace('Sq',  'math.sqrt')
+		text = text.replace('mod', '%').replace('²', '**2').replace('fact' , 'math.factorial')
 		text = text.replace('(-)', '(-1)*')
 		
 		return text
@@ -124,3 +151,12 @@ class CalcState:
 		else:
 			return True
 		return (text.isnumeric() or text == '.')
+
+
+	def IsSpecialFunction(self, text):
+		text = text.lower()
+		if ( text == "sin" or text == "cos" or text == "tan" 
+			or text == "log" or text == "sq" or text == "ln" or text == "fact"):
+			return True
+		
+		return False

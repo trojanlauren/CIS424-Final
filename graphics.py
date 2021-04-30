@@ -47,7 +47,7 @@ class Graphics:
 		btnLn = self.CreateButton(root, text = "ln", width = 10, height = 3, row = 3, column = 0, function = self.TypeButton)
 		btnMod = self.CreateButton(root, text = "mod", width = 10, height = 3, row = 3, column = 1, function = self.TypeButton)
 		btnSquare = self.CreateButton(root, text = "x²", width = 10, height = 3, row = 3, column = 2, function = self.TypeButton)
-		btnSqrt = self.CreateButton(root, text = "Sq", width = 10, height = 3, row = 3, column = 3, function = self.TypeButton)
+		btnSqrt = self.CreateButton(root, text = "Sqrt", width = 10, height = 3, row = 3, column = 3, function = self.TypeButton)
 		btnDel = self.CreateButton(root, text = "Del", width = 10, height = 3, row = 1, column = 3, function = self.DeleteLast)
 		btnClr = self.CreateButton(root, text = "C", width = 10, height = 3, row = 1, column = 2, function = self.ClearScreen)
 		btnLeftPar = self.CreateButton(root, text = "(", width = 10, height = 3, row = 4, column = 0, function = self.TypeButton)
