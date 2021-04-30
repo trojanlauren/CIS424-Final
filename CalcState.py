@@ -82,8 +82,9 @@ class CalcState:
 		self.EqualReset = True
 	
 	def ReplaceSymbols(self, text):
-		text = text.replace('π', 'math.pi').replace('e', 'math.e').replace('sin', 'math.sin')
+		text = text.replace('π', 'math.pi').replace('e', 'math.e')
 		text = text.replace('sin', 'math.sin').replace('cos', 'math.cos').replace('tan', 'math.tan')
+		text = text.replace('(-)', '(-1)*')
 		
 		return text
 		
@@ -122,3 +123,4 @@ class CalcState:
 			return False
 		else:
 			return True
+		return (text.isnumeric() or text == '.')
