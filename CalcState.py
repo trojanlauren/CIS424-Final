@@ -160,3 +160,47 @@ class CalcState:
 			return True
 		
 		return False
+	
+	
+	
+	def calculator (Choice):
+		
+	if Choice == '+':
+            Num_1 = int( input ( 'Enter first number: ' ))
+            Num_2 = int (input (  'Enter second number: '))
+            print('{} + {} = '.format(Num_1, Num_2))
+            print(Num_1 + Num_2)
+	
+	 elif  Choice =="-":
+            Num_1 = int( input ( 'Enter first number: ' ))
+            Num_2 = int (input (  'Enter second number: '))
+            print('{} - {} = '.format(Num_1, Num_2))
+            print(Num_1 - Num_2)
+		
+		
+	
+        elif  Choice == '*':
+            Num_1 = int( input ( 'Enter first number: ' ))
+            Num_2 = int (input (  'Enter second number: '))
+            print('{} * {} = '.format(Num_1, Num_2))
+            print(Num_1 * Num_2)
+		
+		
+	  elif Choice == '/':
+            Num_1 = int( input ( 'Enter first number: ' ))
+            Num_2 = int (input (  'Enter second number: '))
+            print('{} / {} = '.format(Num_1, Num_2))
+            print(Num_1 / Num_2)
+
+        elif Choice == 'sqrt':
+            number= float(input(" Please Enter any numeric Value : "))
+            squareRoot = math.sqrt(number)
+            print("The Square Root of a Given Number {0}  = {1}".format(number, squareRoot))
+	
+	
+	 else:
+            print('Error')
+	
+	
+	
+	
