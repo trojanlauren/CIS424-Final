@@ -109,7 +109,7 @@ class CalcState:
 	def ReplaceSymbols(self, text):
 		text = text.replace('π', 'math.pi').replace('e', 'math.e')
 		text = text.replace('sin', 'math.sin').replace('cos', 'math.cos').replace('tan', 'math.tan')
-		text = text.replace('ln', 'math.log').replace('log', 'math.log10').replace('Sq',  'math.sqrt')
+		text = text.replace('ln', 'math.log').replace('log', 'math.log10').replace('Sqrt',  'math.sqrt')
 		text = text.replace('mod', '%').replace('²', '**2').replace('fact' , 'math.factorial')
 		text = text.replace('(-)', '(-1)*')
 		
@@ -164,42 +164,38 @@ class CalcState:
 	
 	
 	def calculator (Choice):
-		
-	if Choice == '+':
-            Num_1 = int( input ( 'Enter first number: ' ))
-            Num_2 = int (input (  'Enter second number: '))
-            print('{} + {} = '.format(Num_1, Num_2))
-            print(Num_1 + Num_2)
-	
-	 elif  Choice =="-":
-            Num_1 = int( input ( 'Enter first number: ' ))
-            Num_2 = int (input (  'Enter second number: '))
-            print('{} - {} = '.format(Num_1, Num_2))
-            print(Num_1 - Num_2)
-		
-		
-	
-        elif  Choice == '*':
-            Num_1 = int( input ( 'Enter first number: ' ))
-            Num_2 = int (input (  'Enter second number: '))
-            print('{} * {} = '.format(Num_1, Num_2))
-            print(Num_1 * Num_2)
-		
-		
-	  elif Choice == '/':
-            Num_1 = int( input ( 'Enter first number: ' ))
-            Num_2 = int (input (  'Enter second number: '))
-            print('{} / {} = '.format(Num_1, Num_2))
-            print(Num_1 / Num_2)
+                if Choice == '+':
+                    Num_1 = int( input ( 'Enter first number: ' ))
+                    Num_2 = int (input (  'Enter second number: '))
+                    print('{} + {} = '.format(Num_1, Num_2))
+                    print(Num_1 + Num_2)
+                
+                elif  Choice =="-":
+                    Num_1 = int( input ( 'Enter first number: ' ))
+                    Num_2 = int (input (  'Enter second number: '))
+                    print('{} - {} = '.format(Num_1, Num_2))
+                    print(Num_1 - Num_2)
+                
+                elif  Choice == '*':
+                    Num_1 = int( input ( 'Enter first number: ' ))
+                    Num_2 = int (input (  'Enter second number: '))
+                    print('{} * {} = '.format(Num_1, Num_2))
+                    print(Num_1 * Num_2)
+                        
+                elif Choice == '/':
+                    Num_1 = int( input ( 'Enter first number: ' ))
+                    Num_2 = int (input (  'Enter second number: '))
+                    print('{} / {} = '.format(Num_1, Num_2))
+                    print(Num_1 / Num_2)
 
-        elif Choice == 'sqrt':
-            number= float(input(" Please Enter any numeric Value : "))
-            squareRoot = math.sqrt(number)
-            print("The Square Root of a Given Number {0}  = {1}".format(number, squareRoot))
-	
-	
-	 else:
-            print('Error')
+                elif Choice == 'sqrt':
+                    number= float(input(" Please Enter any numeric Value : "))
+                    squareRoot = math.sqrt(number)
+                    print("The Square Root of a Given Number {0}  = {1}".format(number, squareRoot))
+                
+                
+                else:
+                    print('Error')
 	
 	
 	
